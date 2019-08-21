@@ -1,4 +1,4 @@
-#função que cria um data.frame de dicionário das tabelas.
+#função que cria um tibble de dicionário das tabelas.
 # versão 2.0
 
 cDic <- function(tab, descr, fonte) {
