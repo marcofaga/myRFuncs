@@ -1,14 +1,14 @@
-#função que cria um tibble de dicionário das tabelas.
-# versão 2.0
+#função que cria um data.frame de dicionário das tabelas.
+# versão 2.1
 
-cDic <- function(tab, descr, fonte) {
+cDic <- function(tab, descr, fonte, max = 10) {
   
   #checa se o nome das variáveis tem um n de caracteres menor ou igual a 10
   names <- nchar(names(tab))
   
-  if(any(names > 10)) {
+  if(any(names > max)) {
     
-    pos <- which(names > 10)
+    pos <- which(names > max)
     print(pos)
     varsProb <- paste(names(tab)[pos], "\n", sep="", collapse = " ")
     
@@ -51,8 +51,8 @@ cDic <- function(tab, descr, fonte) {
     
     if(each %in% c("numeric", "integer")) {
       
-      maximo <- max(tab[,x])
-      minimo <- min(tab[,x])
+      maximo <- max(tab[,x], na.rm = TRUE)
+      minimo <- min(tab[,x], na.rm = TRUE)
       
       str <- paste("min: ", minimo, "/ max: ", maximo, sep="")
       
